@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.5/css/uikit.min.css" />
+    <link rel="stylesheet" href="css/login.css">
+    <title>Login</title>
+    <style>
+        /* Estilos adicionales */
+        .footer-image {
+            width: 400px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Ajuste para la segunda imagen */
+        .footer-image:nth-child(2) {
+            left: auto;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <container class="uk-container uk-flex uk-flex-center">
+
+        <section class="section-log">
+            <h1>Iniciar Sesión</h1>
+            <input type="text" placeholder="Correo Electrónico">
+            <input type="password" placeholder="Contraseña">
+            <button>Iniciar Sesión</button>
+            <div class="or-separator">O</div>
+            <button class="login-with-google ">
+                <img src="images/section1/logo-google.png" alt="Google Logo">
+                Iniciar Sesión con Google
+            </button>
+            <p class="planify-reference">Bienvenido a Planify</p>
+        </section>
+    </container>
+
+    <section>
+        <!-- Agregar la imagen al pie de página -->
+        <img src="images/section1/login-img.jpg" class="footer-image" alt="Pie de página">
+        <img src="images/section1/login-img2.jpg" class="footer-image" alt="Pie de página">
+    </section>
+
+</body>
+
+</html>
