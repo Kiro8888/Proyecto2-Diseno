@@ -1,141 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart Page</title>
+    <title>Compra</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #6f2da8;
             color: white;
+            font-family: Arial, sans-serif;
         }
-        .cart-container {
+
+        .header-container {
             background-color: #502274;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 15px 20px;
+            border-bottom: 2px solid #ffcc00;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
+        .header-container img {
+            width: 100px;
+        }
+
+        .header-steps {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-steps div {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+
+        .header-steps div span {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+
+        .header-steps div.active span,
+        .header-steps div.completed span {
+            border-color: #ffcc00;
+        }
+
+        .header-steps div.active {
+            color: #ffcc00;
+        }
+
+        .header-steps div.completed {
+            color: #ffcc00;
+        }
+
+        .header-lang {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-lang a {
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .content-container {
+            padding: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header-container">
+        <img src="images/logo.png" alt="Planify Logo">
+        <div class="header-steps">
+            <div class="active" id="step1">
+                <span>1</span> Carrito
+            </div>
+            <div id="step2">
+                <span>2</span> Pago
+            </div>
+            <div id="step3">
+                <span>3</span> Obtén tu producto
+            </div>
+        </div>
+        <div class="header-lang">
+            <a href="#">English EU</a> | <a href="#">CRC</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row content-container" id="view1">
+            <div class="col-md-12">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="cart-container">
+                                <h4>Plan estándar</h4>
+                                <p>Plan basico para pequeños equipos de trabajo</p>
+                                <div class="d-flex">
+                                    <!-- <img src="images/logo.png" alt="Planify logo" class="product-image"> -->
+
+                                    <ul>
+                                        <li>Gestión de tareas</li>
+                                        <li>Vistas de calendario y gráficos de Gantt</li>
+                                        <li>Colaboración con comentarios y menciones</li>
+                                        <li>Archivos adjuntos</li>
+                                        <li>Integraciones con Slack y Trello</li>
+                                        <li>Soporte por correo y chat en vivo</li>
+                                        <li>Seguridad con copias de seguridad automáticas y autenticación de dos
+                                            factores</li>
+                                    </ul>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4">
+                                    <div>
+                                        <h5>Duración del servicio</h5>
+                                        <p>Meses</p>
+                                    </div>
+                                    <div class="ml-auto" style="width: 150px;">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="decreaseValue('duration')">-</button>
+                                            </div>
+                                            <input type="text" class="form-control text-center" id="duration" value="1"
+                                                placeholder="." onchange="calculateTotal()">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="increaseValue('duration')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4">
+                                    <div>
+                                        <h5>Cantidad de usuarios</h5>
+                                        <p>Cuentas</p>
+                                    </div>
+                                    <div class="ml-auto" style="width: 150px;">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="decreaseValue('users')">-</button>
+                                            </div>
+                                            <input type="text" class="form-control text-center" id="users" value="1"
+                                                placeholder="." onchange="calculateTotal()">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="increaseValue('users')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="summary-container">
+                                <h4>Resumen</h4>
+                                <p>Servicio<span class="float-right" id="service-cost">CRC 18,617.93</span></p>
+                                <p>Por usuario<span class="float-right" id="user-cost">CRC 466.84</span></p>
+                                <hr>
+                                <h5>Total <span class="float-right" id="total-cost">CRC 19,084.77</span></h5>
+                                <button onclick="nextStep(2)" class="btn btn-primary btn-block">Proceder con el pago
+                                </button>
+                                <div class="mt-3">
+                                    <a href="#" class="text-light">¿Tienes un código de descuento?</a>
+                                </div>
+                                <div class="mt-3 rating">
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5" title="5 stars">⭐</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4" title="4 stars">⭐</label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3" title="3 stars">⭐</label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2" title="2 stars">⭐</label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1" title="1 star">⭐</label>
+                                </div>
+                                <div class="mt-3">
+                                    <a href="#" class="text-light">Ver nuestras reseñas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button class="btn btn-primary" onclick="nextStep(2)">Ir a Pago</button> -->
+            </div>
+        </div>
+
+        <div class="row content-container hidden" id="view2">
+            <div class="col-md-12">
+                <h2>Pago</h2>
+                <p>Aquí va el contenido del pago...</p>
+                <button class="btn btn-secondary" onclick="prevStep(1)">Regresar al Carrito</button>
+                <button class="btn btn-primary" onclick="nextStep(3)">Proceder a Obtén tu producto</button>
+            </div>
+        </div>
+
+        <div class="row content-container hidden" id="view3">
+            <div class="col-md-12">
+                <h2>Obtén tu producto</h2>
+                <p>Aquí va el contenido para obtener tu producto...</p>
+                <button class="btn btn-secondary" onclick="prevStep(2)">Regresar a Pago</button>
+                <button class="btn btn-primary">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.content-container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`view${step}`).classList.remove('hidden');
+
+            document.querySelectorAll('.header-steps div').forEach(el => {
+                el.classList.remove('active');
+                if (parseInt(el.id.replace('step', '')) < step) {
+                    el.classList.add('completed');
+                } else {
+                    el.classList.remove('completed');
+                }
+            });
+            document.getElementById(`step${step}`).classList.add('active');
+        }
+
+        function prevStep(step) {
+            nextStep(step);
+        }
+    </script>
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const serviceCostPerMonth = 10;
+        const userCostPerMonth = 2;
+
+        function increaseValue(id) {
+            var value = parseInt(document.getElementById(id).value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById(id).value = value;
+            calculateTotal();
+        }
+
+        function decreaseValue(id) {
+            var value = parseInt(document.getElementById(id).value, 10);
+            value = isNaN(value) ? 0 : value;
+            value = value < 1 ? 1 : value - 1;
+            document.getElementById(id).value = value;
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const duration = parseInt(document.getElementById('duration').value, 10);
+            const users = parseInt(document.getElementById('users').value, 10);
+
+            const serviceCost = duration * serviceCostPerMonth;
+            const userCost = duration * users * userCostPerMonth;
+            const totalCost = serviceCost + userCost;
+
+            document.getElementById('service-cost').textContent = `CRC ${serviceCost.toFixed(2)}`;
+            document.getElementById('user-cost').textContent = `CRC ${userCost.toFixed(2)}`;
+            document.getElementById('total-cost').textContent = `CRC ${totalCost.toFixed(2)}`;
+        }
+
+        // Initialize total cost on page load
+        window.onload = calculateTotal;
+    </script>
+    <style>
+        body {
+            background-color: #6f2da8;
+            color: white;
+        }
+
+        .cart-container,
         .summary-container {
             background-color: #502274;
             padding: 20px;
             border-radius: 10px;
+            margin-bottom: 20px;
         }
+
         .btn-primary {
             background-color: #ffcc00;
             border-color: #ffcc00;
             color: #000;
         }
+
         .btn-primary:hover {
             background-color: #e6b800;
             border-color: #e6b800;
         }
+
         .rating {
             direction: rtl;
             unicode-bidi: bidi-override;
             display: flex;
             justify-content: flex-end;
         }
+
         .rating input {
             display: none;
         }
+
         .rating label {
             font-size: 1.5em;
             color: #ccc;
             cursor: pointer;
         }
+
         .rating label:hover,
-        .rating label:hover ~ label,
-        .rating input:checked ~ label {
+        .rating label:hover~label,
+        .rating input:checked~label {
             color: #ffcc00;
         }
+
+        .product-image {
+            width: 107px;
+            height: 100px;
+            margin-right: 20px;
+        }
+
+        .summary-container h5,
+        .summary-container h4 {
+            margin-bottom: 20px;
+        }
+
+        .summary-container .btn {
+            margin-top: 20px;
+        }
     </style>
-</head>
-<body>
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="cart-container">
-                <h4>Plan estándar</h4>
-                <div style="display: flex;"> 
-                    <img src="images/logo.png" alt="" width="107" height="100" loading="lazy" class="uk-align-left">
-                    <p>El plan estándar de Planify, por $10 al mes, ofrece gestión de tareas, vistas de calendario y gráficos de Gantt, colaboración con comentarios y menciones, y archivos adjuntos. Incluye integraciones con Slack y Trello, soporte por correo y chat en vivo, y seguridad con copias de seguridad automáticas y autenticación de dos factores.</p>
-                </div>
-                 <div class="d-flex justify-content-between align-items-center mt-4">
-                    <div>
-                        <h5>Duración del servicio</h5>
-                        <p>Meses</p>
-                    </div>
-                    <div class="ml-auto" style="width: 100px;">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-light" type="button">-</button>
-                            </div>
-                            <input type="text" class="form-control text-center" value="7" placeholder=".">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-light" type="button">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mt-4">
-                    <div>
-                        <h5>Cantidad de usuarios</h5>
-                        <p>Cuentas</p>
-                    </div>
-                    <div class="ml-auto" style="width: 100px;">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-outline-light" type="button">-</button>
-                            </div>
-                            <input type="text" class="form-control text-center" value="3" placeholder=".">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-light" type="button">+</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-4">
-            <div class="summary-container">
-                <h4>Summary</h4>
-                <p>Servicio<span class="float-right">CRC 18,617.93</span></p>
-                <p>Por usuario<span class="float-right">CRC 466.84</span></p>
-                <hr>
-                <h5>Total <span class="float-right">CRC 19,084.77</span></h5>
-                <button class="btn btn-primary btn-block mt-3"><a class="text-withe uk-text-bold" style="text-decoration: none;"
-                    href="/Proyecto2-Diseno/metodopago.html">Proceed to checkout</a></button>
-                <div class="mt-3">
-                    <a href="#" class="text-light">Got discount code?</a>
-                </div>
-                <div class="mt-3 rating">
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label for="star5" title="5 stars">⭐</label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label for="star4" title="4 stars">⭐</label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label for="star3" title="3 stars">⭐</label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label for="star2" title="2 stars">⭐</label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label for="star1" title="1 star">⭐</label>
-                </div>
-                <div class="mt-3">
-                    <a href="#" class="text-light">See our reviews</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Font Awesome for icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
