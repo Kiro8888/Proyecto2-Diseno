@@ -1,1 +1,141 @@
-<h1>HOLA PAGADO</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #6f2da8;
+            color: white;
+        }
+        .cart-container {
+            background-color: #502274;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .summary-container {
+            background-color: #502274;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+            color: #000;
+        }
+        .btn-primary:hover {
+            background-color: #e6b800;
+            border-color: #e6b800;
+        }
+        .rating {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            font-size: 1.5em;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input:checked ~ label {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="cart-container">
+                <h4>Plan estándar</h4>
+                <div style="display: flex;"> 
+                    <img src="images/logo.png" alt="" width="107" height="100" loading="lazy" class="uk-align-left">
+                    <p>El plan estándar de Planify, por $10 al mes, ofrece gestión de tareas, vistas de calendario y gráficos de Gantt, colaboración con comentarios y menciones, y archivos adjuntos. Incluye integraciones con Slack y Trello, soporte por correo y chat en vivo, y seguridad con copias de seguridad automáticas y autenticación de dos factores.</p>
+                </div>
+                 <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div>
+                        <h5>Duración del servicio</h5>
+                        <p>Meses</p>
+                    </div>
+                    <div class="ml-auto" style="width: 100px;">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-light" type="button">-</button>
+                            </div>
+                            <input type="text" class="form-control text-center" value="7" placeholder=".">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-light" type="button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div>
+                        <h5>Cantidad de usuarios</h5>
+                        <p>Cuentas</p>
+                    </div>
+                    <div class="ml-auto" style="width: 100px;">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-light" type="button">-</button>
+                            </div>
+                            <input type="text" class="form-control text-center" value="3" placeholder=".">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-light" type="button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="summary-container">
+                <h4>Summary</h4>
+                <p>Servicio<span class="float-right">CRC 18,617.93</span></p>
+                <p>Por usuario<span class="float-right">CRC 466.84</span></p>
+                <hr>
+                <h5>Total <span class="float-right">CRC 19,084.77</span></h5>
+                <button class="btn btn-primary btn-block mt-3"><a class="text-withe uk-text-bold" style="text-decoration: none;"
+                    href="/Proyecto2-Diseno/metodopago.html">Proceed to checkout</a></button>
+                <div class="mt-3">
+                    <a href="#" class="text-light">Got discount code?</a>
+                </div>
+                <div class="mt-3 rating">
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label for="star5" title="5 stars">⭐</label>
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label for="star4" title="4 stars">⭐</label>
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label for="star3" title="3 stars">⭐</label>
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label for="star2" title="2 stars">⭐</label>
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label for="star1" title="1 star">⭐</label>
+                </div>
+                <div class="mt-3">
+                    <a href="#" class="text-light">See our reviews</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
