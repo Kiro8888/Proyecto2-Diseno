@@ -206,13 +206,159 @@
             </div>
         </div>
 
-        <div class="row content-container hidden" id="view2">
-            <div class="col-md-12">
+        <style>
+            body {
+                background-color: #2c3e50;
+                color: white;
+                font-family: Arial, sans-serif;
+            }
+    
+            .payment-container {
+                background-color: #34495e;
+                padding: 20px;
+                border-radius: 10px;
+                margin: 50px auto;
+                max-width: 800px;
+            }
+    
+            .payment-container h2 {
+                margin-bottom: 20px;
+            }
+    
+            .payment-container input,
+            .payment-container select {
+                background-color: #3b4a57;
+                border: 1px solid #3b4a57;
+                color: white;
+            }
+    
+            .payment-container input::placeholder {
+                color: #ccc;
+            }
+    
+            .payment-container .btn-primary {
+                background-color: #2980b9;
+                border-color: #2980b9;
+                color: white;
+            }
+    
+            .payment-container .btn-primary:hover {
+                background-color: #3498db;
+                border-color: #3498db;
+            }
+    
+            .payment-summary {
+                margin-top: 20px;
+            }
+    
+            .payment-summary p {
+                display: flex;
+                justify-content: space-between;
+                margin: 5px 0;
+            }
+    
+            .payment-summary h5 {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+            }
+    
+            .payment-methods img {
+                margin-bottom: 10px;
+                width: 40px;
+                margin-right: 10px;
+            }
+    
+            .form-check-input {
+                margin-top: 6px;
+            }
+        </style>
+
+        <div class="content-container hidden" id="view2">
+            <div class="payment-container">
                 <h2>Pago</h2>
-                <p>Aquí va el contenido del pago...</p>
-                <button class="btn btn-secondary" onclick="prevStep(1)">Regresar al Carrito</button>
-                <button class="btn btn-primary" onclick="nextStep(3)">Proceder a Obtén tu producto</button>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" checked>
+                    <label class="form-check-label" for="creditCard">
+                        <div class="payment-methods">
+                            <img src="img/visa.png" alt="Visa" style="border-radius: 10px;">
+                            <img src="img/MasterCard.png" alt="MasterCard" style="border-radius: 10px;">
+                            <img src="img/AmericanExpress.png" alt="American Express" style="border-radius: 10px;">
+                            <img src="img/Discover.png" alt="Discover" style="border-radius: 10px;">
+                            <img src="img/DinersClub.png" alt="Diners Club" style="border-radius: 10px;">
+                            <img src="img/JCB.png" alt="JCB" style="border-radius: 10px;">
+                        </div>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="paypal">
+                    <label class="form-check-label" for="paypal">
+                        <img  src="img/paypal.png" alt="PayPal" style="width: 80px; border-radius: 10px;">
+                    </label>
+                </div>
+                <form> 
+                    <div class="form-row mt-3">
+                        <div class="form-group col-md-6">
+                            <label for="cardNumber">Número de tarjeta</label>
+                            <input type="text" class="form-control" id="cardNumber" placeholder="Número de tarjeta">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cardExpiry">Vencimiento</label>
+                            <input type="text" class="form-control" id="cardExpiry" placeholder="MM / YY">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cardCVC">Código de seguridad</label>
+                            <input type="text" class="form-control" id="cardCVC" placeholder="CVC">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstName">Nombre</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Nombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastName">Apellido</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Apellido">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="companyName">Nombre de la empresa</label>
+                            <input type="text" class="form-control" id="companyName" placeholder="Nombre de la empresa">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="address">Dirección</label>
+                            <input type="text" class="form-control" id="address" placeholder="Dirección">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="city">Ciudad</label>
+                            <input type="text" class="form-control" id="city" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="zipCode">Código postal</label>
+                            <input type="text" class="form-control" id="zipCode" placeholder="Código postal">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="country">País</label>
+                            <select id="country" class="form-control">
+                                <option selected>Costa Rica</option>
+                                <!-- Agrega más países aquí si es necesario -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="payment-summary">
+                        <p>Plan Estándar 5 usuarios <span>$720</span></p>
+                        <p>18% de ahorro en el plan anual <span>$840</span></p>
+                        <h5>Total <span>$720</span></h5>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary btn-block mt-3" onclick="nextStep(3)">Realizar compra</button>
+                    <button class="btn btn-primary mt-3" onclick="nextStep(3)">Proceder a Obtén tu producto</button> -->
+                </form>
             </div>
+            <button class="btn btn-secondary mt-3" onclick="prevStep(1)">Regresar al Carrito</button>
+            <button class="btn btn-primary mt-3" onclick="nextStep(3)">Realizar compra</button>
         </div>
 
         <div class="row content-container hidden" id="view3">
