@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tablero</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/project.css"> 
+</head>
+<body>
+  <div class="sidebar">
+    <a href="#">Inicio</a>
+    <a href="#">Mi perfil</a>
+    <a href="#">Tablero</a>
+  </div>
+  <div class="content container mt-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="#">Tablero</a></li>
+   
+      </ol>
+    </nav>
+    
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <button class="btn btn-primary">Agregar grupo nuevo</button>
+      <div class="search-bar ml-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Buscar...">
+        <i class="bi bi-search"></i>
+      </div>
+    </div>
+    
+    <!-- Grupo 1 -->
+    <h4>Desarrollo backend</h4>
+    <table class="table table-bordered">
+      <thead style="background-color: #2c2c4c; color: white;">
+        <tr>
+          <th scope="col">Elemento</th>
+          <th scope="col">Persona</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="group1">
+        <tr>
+          <td>Crear carrito de compras</td>
+          <td><i class="bi bi-person"></i></td>
+          <td><span class="badge badge-warning">En Proceso</span></td>
+          <td>20 mayo.</td>
+        </tr>
+        <tr>
+          <td>Crear vista de tableros</td>
+          <td><i class="bi bi-person"></i></td>
+          <td><span class="badge badge-success">Listo</span></td>
+          <td>17 mayo.</td>
+        </tr>
+        <tr>
+          <td>Crear dashboard</td>
+          <td><i class="bi bi-person"></i></td>
+          <td><span class="badge badge-success">Listo</span></td>
+          <td>23 mayo.</td>
+        </tr>
+        <tr>
+          <td>Crear perfil de usuarios</td>
+          <td><i class="bi bi-person"></i></td>
+          <td><span class="badge badge-danger">Estancado</span></td>
+          <td>22 mayo.</td>
+        </tr>
+        <tr>
+          <td>Crear facturación</td>
+          <td><i class="bi bi-person"></i></td>
+          <td><span class="badge badge-warning">En Proceso</span></td>
+          <td>21 mayo.</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Grupo 2 -->
+    <h4>Desarrollo frontend</h4>
+    <table class="table table-bordered">
+      <thead style="background-color: #2c2c4c; color: white;">
+        <tr>
+          <th scope="col">Elemento</th>
+          <th scope="col">Persona</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="group2">
+        <tr>
+          <td>Crear vista de carrito de compras</td>
+          <td><i class="bi bi-person"></i></td>
+          <td><span class="badge badge-warning">En Proceso</span></td>
+          <td>23 mayo.</td>
+        </tr>
+        <tr>
+          <td>Crear register</td>
+          <td><i class="bi bi-person"></i></td>
+          <td><span class="badge badge-warning">En Proceso</span></td>
+          <td>23 mayo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/script.js"></script> 
+</body>
+</html>
