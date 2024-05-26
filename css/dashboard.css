@@ -1,0 +1,57 @@
+body {
+    background-color: #1c1c3c;
+    color: #fff;
+}
+
+.sidebar {
+    background-color: #2c2c4c;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.sidebar .nav-link {
+    color: #fff;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+.sidebar .nav-link.active {
+    background-color: #007bff;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.card-custom {
+    background-color: #2c2c4c;
+    border: 1px solid #444;
+    margin-bottom: 20px;
+}
+
+.card-custom img {
+    width: 100%;
+}
+
+.btn-primary-custom {
+    background-color: #007bff;
+    border: none;
+}
+
+.card-recent {
+    max-width: 300px; /* Reducing the max-width to make the card smaller */
+}
+
+.card-footer {
+    background-color: #2c2c4c;
+    border-top: 1px solid #444;
+    padding: 10px;
+}
