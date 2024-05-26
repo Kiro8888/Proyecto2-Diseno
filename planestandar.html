@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/compras.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header-container">
+        <img src="images/logo.png" alt="Planify Logo">
+        <div class="header-steps">
+            <div class="active" id="step1">
+                <span>1</span> Carrito
+            </div>
+            <div id="step2">
+                <span>2</span> Pago
+            </div>
+            <div id="step3">
+                <span>3</span> Obtén tu producto
+            </div>
+        </div>
+        <div class="header-lang">
+            <a href="#">English EU</a> | <a href="#">CRC</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row content-container" id="view1">
+            <div class="col-md-12">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="cart-container">
+                                <h4>Plan estándar</h4>
+                                <p>Plan basico para pequeños equipos de trabajo</p>
+                                <div class="d-flex">
+                                    <!-- <img src="images/logo.png" alt="Planify logo" class="product-image"> -->
+
+                                    <ul>
+                                        <li>Gestión de tareas</li>
+                                        <li>Vistas de calendario y gráficos de Gantt</li>
+                                        <li>Colaboración con comentarios y menciones</li>
+                                        <li>Archivos adjuntos</li>
+                                        <li>Integraciones con Slack y Trello</li>
+                                        <li>Soporte por correo y chat en vivo</li>
+                                        <li>Seguridad con copias de seguridad automáticas y autenticación de dos
+                                            factores</li>
+                                    </ul>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4">
+                                    <div>
+                                        <h5>Duración del servicio</h5>
+                                        <p>Meses</p>
+                                    </div>
+                                    <div class="ml-auto" style="width: 150px;">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="decreaseValue('duration')">-</button>
+                                            </div>
+                                            <input type="text" class="form-control text-center" id="duration" value="1"
+                                                placeholder="." onchange="calculateTotal()">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="increaseValue('duration')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-4">
+                                    <div>
+                                        <h5>Cantidad de usuarios</h5>
+                                        <p>Cuentas</p>
+                                    </div>
+                                    <div class="ml-auto" style="width: 150px;">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="decreaseValue('users')">-</button>
+                                            </div>
+                                            <input type="text" class="form-control text-center" id="users" value="1"
+                                                placeholder="." onchange="calculateTotal()">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-light" type="button"
+                                                    onclick="increaseValue('users')">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="summary-container">
+                                <h4>Resumen</h4>
+                                <p>Servicio<span class="float-right" id="service-cost">CRC 18,617.93</span></p>
+                                <p>Por usuario<span class="float-right" id="user-cost">CRC 466.84</span></p>
+                                <hr>
+                                <h5>Total <span class="float-right" id="total-cost">CRC 19,084.77</span></h5>
+                                <button onclick="nextStep(2)" class="btn btn-primary btn-block">Proceder con el pago
+                                </button>
+                                <div class="mt-3">
+                                    <a href="#" class="text-light">¿Tienes un código de descuento?</a>
+                                </div>
+                                <div class="mt-3 rating">
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5" title="5 stars">⭐</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4" title="4 stars">⭐</label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3" title="3 stars">⭐</label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2" title="2 stars">⭐</label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1" title="1 star">⭐</label>
+                                </div>
+                                <div class="mt-3">
+                                    <a href="#" class="text-light">Ver nuestras reseñas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button class="btn btn-primary" onclick="nextStep(2)">Ir a Pago</button> -->
+            </div>
+        </div>
+        <div class="content-container hidden" id="view2">
+            <div class="payment-container">
+                <h2>Pago</h2>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" checked>
+                    <label class="form-check-label" for="creditCard">
+                        <div class="payment-methods">
+                            <img src="img/visa.png" alt="Visa" style="border-radius: 10px;">
+                            <img src="img/MasterCard.png" alt="MasterCard" style="border-radius: 10px;">
+                            <img src="img/AmericanExpress.png" alt="American Express" style="border-radius: 10px;">
+                            <img src="img/Discover.png" alt="Discover" style="border-radius: 10px;">
+                            <img src="img/DinersClub.png" alt="Diners Club" style="border-radius: 10px;">
+                            <img src="img/JCB.png" alt="JCB" style="border-radius: 10px;">
+                        </div>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="paypal">
+                    <label class="form-check-label" for="paypal">
+                        <img src="img/paypal.png" alt="PayPal" style="width: 80px; border-radius: 10px;">
+                    </label>
+                </div>
+                <form>
+                    <div class="form-row mt-3">
+                        <div class="form-group col-md-6">
+                            <label for="cardNumber">Número de tarjeta</label>
+                            <input type="text" class="form-control" id="cardNumber" placeholder="Número de tarjeta">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cardExpiry">Vencimiento</label>
+                            <input type="text" class="form-control" id="cardExpiry" placeholder="MM / YY">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="cardCVC">Código de seguridad</label>
+                            <input type="text" class="form-control" id="cardCVC" placeholder="CVC">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstName">Nombre</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="Nombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastName">Apellido</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Apellido">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="companyName">Nombre de la empresa</label>
+                            <input type="text" class="form-control" id="companyName" placeholder="Nombre de la empresa">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="address">Dirección</label>
+                            <input type="text" class="form-control" id="address" placeholder="Dirección">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="city">Ciudad</label>
+                            <input type="text" class="form-control" id="city" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="zipCode">Código postal</label>
+                            <input type="text" class="form-control" id="zipCode" placeholder="Código postal">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="country">País</label>
+                            <select id="country" class="form-control">
+                                <option selected>Costa Rica</option>
+                                <!-- Agrega más países aquí si es necesario -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="payment-summary">
+                        <p>Plan Estándar 5 usuarios <span>$720</span></p>
+                        <p>18% de ahorro en el plan anual <span>$840</span></p>
+                        <h5>Total <span>$720</span></h5>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary btn-block mt-3" onclick="nextStep(3)">Realizar compra</button>
+                    <button class="btn btn-primary mt-3" onclick="nextStep(3)">Proceder a Obtén tu producto</button> -->
+                </form>
+            </div>
+            <button class="btn btn-secondary mt-3" onclick="prevStep(1)">Regresar al Carrito</button>
+            <button class="btn btn-primary mt-3" onclick="nextStep(3)">Realizar compra</button>
+        </div>
+
+        <style>
+
+        </style>
+
+        <div class="content-container hidden" id="view3">
+            <div class="thank-you-container">
+                <h2>¡Gracias por tu compra!</h2>
+                <p>Tu transacción ha sido completada con éxito.</p>
+                <p>Hemos enviado un recibo a tu correo electrónico con los detalles de tu compra.</p>
+                <p>Si tienes alguna pregunta, no dudes en contactarnos a través de nuestro soporte.</p>
+                <a class="btn btn-primary" href="index.html">Volver al Inicio</a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.content-container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`view${step}`).classList.remove('hidden');
+
+            document.querySelectorAll('.header-steps div').forEach(el => {
+                el.classList.remove('active');
+                if (parseInt(el.id.replace('step', '')) < step) {
+                    el.classList.add('completed');
+                } else {
+                    el.classList.remove('completed');
+                }
+            });
+            document.getElementById(`step${step}`).classList.add('active');
+        }
+
+        function prevStep(step) {
+            nextStep(step);
+        }
+    </script>
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const serviceCostPerMonth = 10;
+        const userCostPerMonth = 2;
+
+        function increaseValue(id) {
+            var value = parseInt(document.getElementById(id).value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            document.getElementById(id).value = value;
+            calculateTotal();
+        }
+
+        function decreaseValue(id) {
+            var value = parseInt(document.getElementById(id).value, 10);
+            value = isNaN(value) ? 0 : value;
+            value = value < 1 ? 1 : value - 1;
+            document.getElementById(id).value = value;
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const duration = parseInt(document.getElementById('duration').value, 10);
+            const users = parseInt(document.getElementById('users').value, 10);
+
+            const serviceCost = duration * serviceCostPerMonth;
+            const userCost = duration * users * userCostPerMonth;
+            const totalCost = serviceCost + userCost;
+
+            document.getElementById('service-cost').textContent = `CRC ${serviceCost.toFixed(2)}`;
+            document.getElementById('user-cost').textContent = `CRC ${userCost.toFixed(2)}`;
+            document.getElementById('total-cost').textContent = `CRC ${totalCost.toFixed(2)}`;
+        }
+
+        // Initialize total cost on page load
+        window.onload = calculateTotal;
+    </script>
+</body>
+
+</html>
