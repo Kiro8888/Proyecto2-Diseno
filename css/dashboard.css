@@ -47,7 +47,7 @@ body {
 }
 
 .card-recent {
-    max-width: 300px; /* Reducing the max-width to make the card smaller */
+    max-width: 500px; /* Reducing the max-width to make the card smaller */
 }
 
 .card-footer {
